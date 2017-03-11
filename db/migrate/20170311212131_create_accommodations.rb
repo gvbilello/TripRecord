@@ -6,7 +6,7 @@ class CreateAccommodations < ActiveRecord::Migration[5.0]
     	t.string :description
     	t.datetime :checkin_datetime
     	t.datetime :checkout_datetime
-    	t.decimal :cost, scale: 2
+    	t.decimal :cost
 
       t.timestamps
     end

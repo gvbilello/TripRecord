@@ -6,7 +6,7 @@ class CreateEvents < ActiveRecord::Migration[5.0]
     	t.string :type
     	t.string :description
     	t.time :time
-    	t.decimal :cost, scale: 2
+    	t.decimal :cost
     	t.references :photo
     	t.references :tripdate
 

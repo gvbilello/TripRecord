@@ -10,7 +10,7 @@ class CreateRentalCars < ActiveRecord::Migration[5.0]
     	t.string :make
     	t.string :model
     	t.string :year
-    	t.decimal :cost, scale: 2
+    	t.decimal :cost
 
       t.timestamps
     end

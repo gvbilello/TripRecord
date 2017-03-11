@@ -8,7 +8,7 @@ class CreateFlights < ActiveRecord::Migration[5.0]
     	t.string :flight_number
     	t.string :takeoff_airport
     	t.string :landing_airport
-    	t.decimal :cost, scale: 2
+    	t.decimal :cost
 
       t.timestamps
     end
