@@ -12,6 +12,7 @@
   	<div class='nav'>
       <h1>TripRecord</h1>
       <ul id='nav-options'>
+      	<li><%= link_to 'Home', root_url %></li>
         <% if logged_in? %>
           <li><%= link_to 'My Trips', current_user %></li>
           <li><%= link_to 'Log Out', signout_path, method: 'delete' %></li>
