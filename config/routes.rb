@@ -6,7 +6,15 @@ Rails.application.routes.draw do
   delete '/signout', to: 'sessions#destroy'
 
   resources :users, except: [:index, :destroy] do
-  	resources :trips, except: [:index]
+  	resources :trips, except: [:index] do
+  		resources :accommodations, except: [:index]
+  		resources :events, except: [:index] do
+  			resources :photos, only: [:show, :new, :create, :destroy]
+  		end
+  		resources :flights, except: [:index]
+  		resources :photos, only: [:show, :new, :create, :destroy]
+  		resources :rental_cars, except: [:index]
+  	end
   end
 
 
