@@ -1,4 +1,4 @@
 class Event < ApplicationRecord
-	belongs_to :trip_date
+	belongs_to :trip
 	has_many :photos
 end
