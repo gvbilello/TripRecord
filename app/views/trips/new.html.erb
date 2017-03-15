@@ -1,1 +1,23 @@
-Add a Trip
+<!-- new trip form -->
+<% provide(:title, 'Create New Trip') %>
+<h1>Create New Trip</h1>
+
+<%= form_for :trip, url: { action: 'create' } do |f| %>
+	<%= render partial: 'application/errors', layout: false, locals: { errors: @errors } %>
+
+	<%= f.hidden_field :user_id, :value => session[:user_id] %>
+	
+	<p>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</p>
+
+	<p>
+		<%= f.label :description %>
+		<%= f.text_field :description %>
+	</p>
+
+	<p>
+		<%= f.submit "Create Trip" %>
+	</p>
+<% end %>

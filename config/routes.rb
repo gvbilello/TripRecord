@@ -5,13 +5,10 @@ Rails.application.routes.draw do
   post '/signin', to: 'sessions#create'
   delete '/signout', to: 'sessions#destroy'
 
-  resources :users
-  resources :trips
-  resources :trip_dates
-  resources :events
-  resources :accommodations
-  resources :flights
-  resources :rental_cars
-  
+  resources :users, except: [:index, :destroy] do
+  	resources :trips, except: [:index]
+  end
+
+
   root 'static#index'
 end
