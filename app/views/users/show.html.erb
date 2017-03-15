@@ -1,3 +1,7 @@
+<%= link_to 'Create New Trip', new_user_trip_path(@user) %>
+
 <h1><%= @user.username %>'s Trips</h1>
 
-<%= link_to 'Create New Trip', trips_path %>
+<% @user.trips.each do |trip| %>
+	<p><%= link_to "#{trip.name}", user_trip_path(trip.user_id, trip) %><%= " #{trip.start_date} to #{trip.end_date}" %></p>
+<% end %>
