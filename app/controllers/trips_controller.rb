@@ -1,4 +1,5 @@
 class TripsController < ApplicationController
+	helper TripsHelper
 
 	def show
 		@trip = Trip.find(params[:id])

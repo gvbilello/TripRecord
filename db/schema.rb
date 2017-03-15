@@ -16,14 +16,16 @@ ActiveRecord::Schema.define(version: 20170311212131) do
   enable_extension "plpgsql"
 
   create_table "accommodations", force: :cascade do |t|
+    t.integer  "trip_id",       null: false
     t.string   "name"
     t.string   "location"
     t.string   "description"
-    t.datetime "checkin_datetime"
-    t.datetime "checkout_datetime"
+    t.date     "checkin_date"
+    t.date     "checkout_date"
     t.decimal  "cost"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["trip_id"], name: "index_accommodations_on_trip_id", using: :btree
   end
 
   create_table "events", force: :cascade do |t|
@@ -32,13 +34,14 @@ ActiveRecord::Schema.define(version: 20170311212131) do
     t.string   "type"
     t.string   "description"
     t.time     "time"
+    t.date     "date"
     t.decimal  "cost"
     t.integer  "photo_id"
-    t.integer  "tripdate_id"
+    t.integer  "trip_id",     null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["photo_id"], name: "index_events_on_photo_id", using: :btree
-    t.index ["tripdate_id"], name: "index_events_on_tripdate_id", using: :btree
+    t.index ["trip_id"], name: "index_events_on_trip_id", using: :btree
   end
 
   create_table "flights", force: :cascade do |t|
@@ -79,23 +82,12 @@ ActiveRecord::Schema.define(version: 20170311212131) do
     t.index ["trip_id"], name: "index_rental_cars_on_trip_id", using: :btree
   end
 
-  create_table "trip_dates", force: :cascade do |t|
-    t.string   "date_title"
-    t.integer  "trip_id",          null: false
-    t.integer  "accommodation_id"
-    t.date     "date",             null: false
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.index ["accommodation_id"], name: "index_trip_dates_on_accommodation_id", using: :btree
-    t.index ["trip_id"], name: "index_trip_dates_on_trip_id", using: :btree
-  end
-
   create_table "trips", force: :cascade do |t|
     t.string   "name",        null: false
     t.string   "description"
     t.date     "start_date"
     t.date     "end_date"
-    t.integer  "user_id"
+    t.integer  "user_id",     null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["user_id"], name: "index_trips_on_user_id", using: :btree
