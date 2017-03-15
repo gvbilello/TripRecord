@@ -81,9 +81,9 @@ ActiveRecord::Schema.define(version: 20170311212131) do
 
   create_table "trip_dates", force: :cascade do |t|
     t.string   "date_title"
-    t.integer  "trip_id"
+    t.integer  "trip_id",          null: false
     t.integer  "accommodation_id"
-    t.date     "date"
+    t.date     "date",             null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.index ["accommodation_id"], name: "index_trip_dates_on_accommodation_id", using: :btree
@@ -93,6 +93,8 @@ ActiveRecord::Schema.define(version: 20170311212131) do
   create_table "trips", force: :cascade do |t|
     t.string   "name",        null: false
     t.string   "description"
+    t.date     "start_date"
+    t.date     "end_date"
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
