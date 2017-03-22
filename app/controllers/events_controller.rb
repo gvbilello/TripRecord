@@ -5,7 +5,7 @@ class EventsController < ApplicationController
 	end
 
 	def new
-		@event = Event.new(user_id: session[:user_id])
+		@event = Event.new(trip_id: params[:trip_id])
 	end
 
 	def create
@@ -29,5 +29,8 @@ class EventsController < ApplicationController
 	end
 
 	private
+		def event_params
+			params.require(:event).permit(:name, :location, :type_of, :description, :time, :date, :cost, :photo, :trip_id)
+		end
 
 end

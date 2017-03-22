@@ -1,3 +1,5 @@
 <h1><%= @trip.name %></h1>
 <p><%= "#{@trip.start_date} to #{@trip.end_date}" %></p>
 <p><%= @trip.description %></p>
+
+<%= link_to 'Add New Event', new_user_trip_event_path(@trip.user, @trip) %>
