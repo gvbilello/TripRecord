@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
 
 	def show
+		binding.pry
 		@event = Event.find(params[:id])
 	end
 
@@ -12,7 +13,7 @@ class EventsController < ApplicationController
 		event = Event.new(event_params)
 		if event.save
 			flash[:success] = 'Event Successfully Created'
-			redirect_to user_trip_event_path(event.user_id, event.trip_id, event)
+			redirect_to user_trip_event_path(User.find(params[:user_id]), Trip.find(event.trip), event)
 		else
 			@errors = event.errors.full_messages
 			render 'new'
@@ -26,6 +27,9 @@ class EventsController < ApplicationController
 	end
 
 	def destroy
+		Event.find(params[:id]).destroy
+		flash[:success] = "Event Deleted"
+		redirect_to user_trip_path(params[:user_id], params[:trip_id])
 	end
 
 	private

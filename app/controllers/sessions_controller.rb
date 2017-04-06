@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+	helper SessionsHelper
 
 	def new
 	end

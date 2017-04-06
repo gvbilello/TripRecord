@@ -1,0 +1,9 @@
+<h1><%= @event.name %></h1>
+<p>Location: <%= @event.location %></p>
+<p>Event Type: <%= @event.type_of %></p>
+<p>Description: <%= @event.description %></p>
+<p>Time: <%= @event.time %></p>
+<p>Date: <%= @event.date %></p>
+<p>Cost: <%= @event.cost %></p>
+
+<p><%= link_to "Delete Event", { action: :destroy, id: @event.id }, method: :delete, data: { confirm: 'Are you sure?' } %></p>
