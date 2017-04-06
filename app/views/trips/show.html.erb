@@ -2,8 +2,10 @@
 <p><%= "#{@trip.start_date} to #{@trip.end_date}" %></p>
 <p>Description: <%= @trip.description %></p>
 <p>Events:</p>
+<ul>
 <% @trip.events.each do |event| %>
-	<p><%= link_to "#{event.name}", user_trip_event_path(event.trip, event) %></p>
+	<li><%= render partial: 'events/show', layout: false, locals: { event: @event } %></li>
 <% end %>
+</ul>
 
 <p><%= link_to 'Add New Event', new_user_trip_event_path(@trip.user, @trip) %></p>

@@ -6,6 +6,7 @@ class EventsController < ApplicationController
 	end
 
 	def new
+		binding.pry
 		@event = Event.new(trip_id: params[:trip_id])
 	end
 
