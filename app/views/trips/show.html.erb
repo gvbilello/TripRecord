@@ -2,4 +2,8 @@
 <p><%= "#{@trip.start_date} to #{@trip.end_date}" %></p>
 <p><%= @trip.description %></p>
 
+<%= link_to 'Add New Flight', new_user_trip_flight_path(@trip.user, @trip) %>
+
+<%= link_to 'Add New Rental Car', new_user_trip_rental_car_path(@trip.user, @trip) %>
+
 <%= link_to 'Add New Event', new_user_trip_event_path(@trip.user, @trip) %>
