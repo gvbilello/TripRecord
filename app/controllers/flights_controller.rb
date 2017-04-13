@@ -12,7 +12,7 @@ class FlightsController < ApplicationController
 		flight = Flight.new(flight_params)
 		if flight.save
 			flash[:success] = 'Flight Successfully Created'
-			redirect_to user_trip_flight_path(flight.trip.user, flight.trip, flight)
+			redirect_to user_trip_path(flight.trip.user, flight.trip)
 		else
 			@errors = flight.errors.full_messages
 			render 'new'

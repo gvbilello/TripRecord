@@ -12,7 +12,7 @@ class EventsController < ApplicationController
 		event = Event.new(event_params)
 		if event.save
 			flash[:success] = 'Event Successfully Created'
-			redirect_to user_trip_event_path(event.trip.user, event.trip, event)
+			redirect_to user_trip_path(event.trip.user, event.trip)
 		else
 			@errors = event.errors.full_messages
 			render 'new'

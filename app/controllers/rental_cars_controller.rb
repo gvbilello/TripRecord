@@ -12,7 +12,7 @@ class RentalCarsController < ApplicationController
 		rental_car = RentalCar.new(rental_car_params)
 		if rental_car.save
 			flash[:success] = 'Rental Car Successfully Created'
-			redirect_to user_trip_rental_car_path(rental_car.trip.user, rental_car.trip, rental_car)
+			redirect_to user_trip_path(rental_car.trip.user, rental_car.trip)
 		else
 			@errors = rental_car.errors.full_messages
 			render 'new'
