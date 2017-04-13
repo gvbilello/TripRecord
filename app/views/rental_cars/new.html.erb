@@ -1,0 +1,59 @@
+<!-- new rental car form -->
+<% provide(:title, 'Add New Rental Car') %>
+<h1>Add New Rental Car</h1>
+
+<%= form_for :rental_car, url: { action: 'create' } do |f| %>
+	<%= render partial: 'application/errors', layout: false, locals: { errors: @errors } %>
+
+	<%= f.hidden_field :trip_id, :value => params[:trip_id] %>
+
+	<p>
+		<%= f.label :rental_company %>
+		<%= f.text_field :rental_company %>
+	</p>
+
+	<p>
+		<%= f.label :pickup_location %>
+		<%= f.text_field :pickup_location %>
+	</p>
+
+	<p>
+		<%= f.label :dropoff_location %>
+		<%= f.text_field :dropoff_location %>
+	</p>
+
+	<p>
+		<%= f.label :pickup_datetime %>
+		<%= f.datetime_select :pickup_datetime %>
+	</p>
+
+	<p>
+		<%= f.label :dropoff_datetime %>
+		<%= f.datetime_select :dropoff_datetime %>
+	</p>
+
+	<p>
+		<%= f.label :make %>
+		<%= f.text_field :make %>
+	</p>
+
+	<p>
+		<%= f.label :model %>
+		<%= f.text_field :model %>
+	</p>
+
+	<p>
+		<%= f.label :year %>
+		<%= f.text_field :year %>
+	</p>
+
+	<p>
+		<%= f.label :cost %>
+		<%= f.text_field :cost %>
+	</p>
+
+	<p>
+		<%= f.submit "Add Rental Car" %>
+	</p>
+
+<% end %>

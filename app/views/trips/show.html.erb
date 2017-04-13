@@ -1,3 +1,35 @@
 <h1><%= @trip.name %></h1>
 <p><%= "#{@trip.start_date} to #{@trip.end_date}" %></p>
 <p><%= @trip.description %></p>
+
+<!-- display flight information -->
+<% if @trip.flights.length != 0 %>
+	<h1>Flight Information</h1>
+	<% @trip.flights.each do |flight| %>
+		<p><%= "#{flight.airline} #{flight.flight_number} from #{flight.takeoff_airport} to #{flight.landing_airport}" %></p>
+	<% end %>
+<% end %>
+
+<!-- display rental car information -->
+<% if @trip.rental_cars.length != 0 %>
+	<h1>Rental Car Information</h1>
+	<% @trip.rental_cars.each do |rental_car| %>
+		<!-- 2004 Ford Fusion from Avis -->
+		<p><%= "#{rental_car.year} #{rental_car.make} #{rental_car.model} from #{rental_car.rental_company}" %></p>
+	<% end %>
+<% end %>
+
+<!-- display events -->
+<% if @trip.events.length != 0 %>
+	<h1>Events</h1>
+	<% @trip.events.each do |event| %>
+		<p><%= event.name %></p>
+		<p><%= event.description %></p>
+	<% end %>
+<% end %>
+
+<%= link_to 'Add New Flight', new_user_trip_flight_path(@trip.user, @trip) %>
+
+<%= link_to 'Add New Rental Car', new_user_trip_rental_car_path(@trip.user, @trip) %>
+
+<%= link_to 'Add New Event', new_user_trip_event_path(@trip.user, @trip) %>

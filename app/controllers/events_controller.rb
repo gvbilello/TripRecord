@@ -1,12 +1,22 @@
 class EventsController < ApplicationController
 
 	def show
+		@event = Event.find(params[:id])
 	end
 
 	def new
+		@event = Event.new(trip_id: params[:trip_id])
 	end
 
 	def create
+		event = Event.new(event_params)
+		if event.save
+			flash[:success] = 'Event Successfully Created'
+			redirect_to user_trip_path(event.trip.user, event.trip)
+		else
+			@errors = event.errors.full_messages
+			render 'new'
+		end
 	end
 
 	def edit
@@ -19,5 +29,8 @@ class EventsController < ApplicationController
 	end
 
 	private
+		def event_params
+			params.require(:event).permit(:name, :location, :type_of, :description, :time, :date, :cost, :photo, :trip_id)
+		end
 
 end
